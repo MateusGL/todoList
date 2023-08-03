@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
-import { User } from '../../database/user.entity'
 import { UserService } from './user.service'
+import { UserDTO } from './userDTO'
 
 @ApiTags('User')
 @Controller('api/v1/user')
@@ -14,7 +14,7 @@ export class UserController {
   }
 
   @Post()
-  create(@Body() payload: User): Promise<any> {
+  create(@Body() payload: UserDTO): Promise<any> {
     return this.userService.create(payload)
   }
 }
